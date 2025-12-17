@@ -20,9 +20,7 @@ class LoginUser implements LoginUsers
         }
 
         return back()
-            ->withErrors([
-                'email' => 'The provided credentials do not match our records.',
-            ])
-            ->onlyInput('email');
+            ->with('error', 'Invalid credentials. Please try again.')
+            ->withInput();
     }
 }

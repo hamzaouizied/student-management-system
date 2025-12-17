@@ -21,7 +21,7 @@ class LoginController extends Controller
 
     public function login(UserLoginRequest $request)
     {
-        $this->loginUser->login($request);
+        return $this->loginUser->login($request);
     }
 
 }
