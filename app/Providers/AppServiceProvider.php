@@ -20,6 +20,16 @@ class AppServiceProvider extends ServiceProvider
             \App\Contracts\Student\StoreStudents::class,
             \App\Actions\Student\StoreStudent::class
         );
+
+        $this->app->singleton(
+            \App\Contracts\Student\EditStudents::class,
+            \App\Actions\Student\EditStudent::class
+        );
+
+        $this->app->singleton(
+            \App\Contracts\Student\DeleteStudents::class,
+            \App\Actions\Student\DeleteStudent::class
+        );
     }
 
     /**

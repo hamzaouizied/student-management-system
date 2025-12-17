@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Contracts\User;
+namespace App\Contracts\Student;
 
-use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\Student\StudentRequest;
+use App\Models\Student;
 
 interface EditStudents
 {
-    public function login(StudentRequest $studentRequest): RedirectResponse;
+    public function edit(StudentRequest $studentRequest, Student $student);
 }

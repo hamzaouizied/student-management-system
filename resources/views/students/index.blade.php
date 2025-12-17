@@ -59,6 +59,20 @@
     <script>
         $(document).ready(function () {
 
+            $('#students-table').DataTable({
+                pageLength: 19,
+                lengthChange: true,
+                ordering: false,
+                responsive: true,
+                language: {
+                    search: "Search:",
+                    paginate: {
+                        previous: "Prev",
+                        next: "Next"
+                    }
+                }
+            });;
+
             $('.delete-student').on('click', function (e) {
                 e.preventDefault();
                 let studentId = $(this).data('id');

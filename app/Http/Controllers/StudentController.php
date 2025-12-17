@@ -4,17 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use App\Models\Course;
-use Illuminate\Http\Request;
 use App\Contracts\Student\StoreStudents;
+use App\Contracts\Student\DeleteStudents;
+use App\Contracts\Student\EditStudents;
 use App\Http\Requests\Student\StudentRequest;
 
 class StudentController extends Controller
 {
     protected StoreStudents $storeStudent;
+    protected DeleteStudents $deleteStudent;
+    protected EditStudents $editStudent;
 
-    public function __construct(StoreStudents $storeStudent)
+    public function __construct(StoreStudents $storeStudent, DeleteStudents $deleteStudent, EditStudents $editStudent)
     {
         $this->storeStudent = $storeStudent;
+        $this->deleteStudent = $deleteStudent;
+        $this->editStudent = $editStudent;
     }
 
     /**
@@ -22,7 +27,9 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = Student::with('courses')->get();
+        $students = Student::with('courses')
+            ->orderBy('created_at', 'desc')
+            ->get();
         return view('students.index', compact('students'));
     }
 
@@ -68,23 +75,7 @@ class StudentController extends Controller
      */
     public function update(StudentRequest $request, Student $student)
     {
-        $data = $request->validated();
-
-        $student->update($data);
-
-        if ($request->has('courses')) {
-            $coursesWithPivot = collect($request->courses)
-                ->mapWithKeys(fn($courseId) => [$courseId => ['enrolled_at' => now()]])
-                ->toArray();
-
-            $student->courses()->sync($coursesWithPivot);
-        } else {
-            $student->courses()->detach();
-        }
-
-        return redirect()
-            ->route('students.index')
-            ->with('success', 'Student updated successfully');
+        return $this->editStudent->edit($request, $student);
     }
 
     /**
@@ -92,11 +83,6 @@ class StudentController extends Controller
      */
     public function destroy(Student $student)
     {
-        $student->courses()->detach();
-        $student->delete();
-
-        return redirect()
-            ->route('students.index')
-            ->with('success', 'Student deleted successfully');
+        return $this->deleteStudent->delete($student);
     }
 }

@@ -11,39 +11,42 @@
                 @csrf
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                        <label class="block mb-1">First Name <span class="text-red-500">*</span>
-                        </label>
-                        <input type="text" name="first_name" class="w-full border px-3 py-2 rounded">
+                        <label class="block mb-1">First Name <span class="text-red-500">*</span></label>
+                        <input type="text" name="first_name" placeholder="Enter first name"
+                            class="w-full border px-3 py-2 rounded">
                     </div>
 
                     <div>
-                        <label class="block mb-1">Last Name<span class="text-red-500">*</span></label>
-                        <input type="text" name="last_name" class="w-full border px-3 py-2 rounded">
+                        <label class="block mb-1">Last Name <span class="text-red-500">*</span></label>
+                        <input type="text" name="last_name" placeholder="Enter last name"
+                            class="w-full border px-3 py-2 rounded">
                     </div>
 
                     <div>
-                        <label class="block mb-1">Email<span class="text-red-500">*</span></label>
-                        <input type="email" name="email" class="w-full border px-3 py-2 rounded">
+                        <label class="block mb-1">Email <span class="text-red-500">*</span></label>
+                        <input type="email" name="email" placeholder="Enter email" class="w-full border px-3 py-2 rounded">
                     </div>
 
                     <div>
-                        <label class="block mb-1">Date of Birth<span class="text-red-500">*</span></label>
+                        <label class="block mb-1">Date of Birth <span class="text-red-500">*</span></label>
                         <input type="date" name="date_of_birth" class="w-full border px-3 py-2 rounded">
                     </div>
 
                     <div>
-                        <label class="block mb-1">Phone<span class="text-red-500">*</span></label>
-                        <input type="text" name="phone" class="w-full border px-3 py-2 rounded">
+                        <label class="block mb-1">Phone <span class="text-red-500">*</span></label>
+                        <input type="text" name="phone" placeholder="Enter phone number"
+                            class="w-full border px-3 py-2 rounded">
                     </div>
 
                     <div>
-                        <label class="block mb-1">Address<span class="text-red-500">*</span></label>
-                        <input type="text" name="address" class="w-full border px-3 py-2 rounded">
+                        <label class="block mb-1">Address <span class="text-red-500">*</span></label>
+                        <input type="text" name="address" placeholder="Enter address"
+                            class="w-full border px-3 py-2 rounded">
                     </div>
                 </div>
 
                 <div class="mt-4">
-                    <label class="block mb-1">Courses<span class="text-red-500">*</span></label>
+                    <label class="block mb-1">Courses <span class="text-red-500">*</span></label>
                     <select name="courses[]" multiple class="js-example-basic-multiple w-full border px-3 py-2 rounded">
                         @foreach($courses as $course)
                             <option value="{{ $course->id }}">{{ $course->title }}</option>
@@ -67,16 +70,11 @@
 @push('scripts')
     <script>
         $(document).ready(function () {
-
-            $('.js-example-basic-multiple').select2({
-                width: '100%'
-            });
+            $('.js-example-basic-multiple').select2({ width: '100%' });
 
             $('#student-form').on('submit', function (e) {
                 e.preventDefault();
-
                 $('#form-errors').addClass('hidden').html('');
-
                 $.ajax({
                     url: "{{ route('students.store') }}",
                     method: "POST",
@@ -86,23 +84,22 @@
                             title: "Success!",
                             text: "Student created successfully!",
                             icon: "success"
+                        }).then(() => {
+                            window.location.href = "{{ route('students.index') }}";
                         });
-                        window.location.href = "{{ route('students.index') }}";
                     },
                     error: function (xhr) {
                         if (xhr.status === 422) {
                             let errors = xhr.responseJSON.errors;
                             let errorHtml = '<ul>';
-
                             $.each(errors, function (key, value) {
                                 errorHtml += '<li>' + value[0] + '</li>';
                             });
-
                             errorHtml += '</ul>';
 
-                            $('#form-errors')
-                                .removeClass('hidden')
-                                .html(errorHtml);
+                            $('#form-errors').removeClass('hidden').html(errorHtml);
+                        } else {
+                            Swal.fire("Error!", "Something went wrong.", "error");
                         }
                     }
                 });
