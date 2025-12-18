@@ -40,12 +40,9 @@
                             <a href="{{ route('courses.show', $course) }}" class="text-blue-600 hover:underline">
                                 Show
                             </a>
-                            <a href="#" class="text-blue-600 hover:underline">Edit</a>
-                            <form action="#" method="POST" class="inline">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="text-red-600 hover:underline">Delete</button>
-                            </form>
+                            <a href="{{ route('courses.edit', $course) }}" class="text-blue-600 hover:underline">Edit</a>
+                            <a href="#" class="text-red-600 hover:underline delete-course"
+                                data-id="{{ $course->id }}">Delete</a>
                         </td>
                     </tr>
                 @endforeach
@@ -69,6 +66,47 @@
                         next: "Next"
                     }
                 }
+            });
+
+            $('.delete-course').on('click', function () {
+                let courseId = $(this).data('id');
+
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "This action cannot be undone!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url: `/courses/${courseId}`,
+                            type: 'POST',
+                            data: {
+                                _method: 'DELETE',
+                                _token: '{{ csrf_token() }}'
+                            },
+                            success: function () {
+                                Swal.fire(
+                                    'Deleted!',
+                                    'Course has been deleted.',
+                                    'success'
+                                ).then(() => {
+                                    window.location.href = "{{ route('courses.index') }}";
+                                });
+                            },
+                            error: function () {
+                                Swal.fire(
+                                    'Error!',
+                                    'Something went wrong.',
+                                    'error'
+                                );
+                            }
+                        });
+                    }
+                });
             });
         });
     </script>
