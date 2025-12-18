@@ -1,9 +1,7 @@
 # Student Management System
 
 <p align="center">
-  <a href="https://yourproject.com">
     <img src="http://student-managelebt-system.test/img/student.png" width="400" alt="Student Management System Logo">
-  </a>
 </p>
 
 <p align="center">
@@ -31,51 +29,27 @@
   </a>
 </p>
 
-## 📋 Table of Contents
-
--   [✨ Features](#-features)
--   [🚀 Quick Start](#-quick-start)
--   [📦 Installation](#-installation)
--   [⚙️ Configuration](#️-configuration)
--   [🗄️ Database Setup](#️-database-setup)
--   [🎨 Frontend Development](#-frontend-development)
--   [🔧 Usage](#-usage)
--   [👥 Default Users](#-default-users)
--   [🧪 Testing](#-testing)
--   [📁 Project Structure](#-project-structure)
--   [🔒 Security](#-security)
--   [🤝 Contributing](#-contributing)
--   [📄 License](#-license)
--   [📞 Support](#-support)
-
 ## ✨ Features
 
 ### 📊 Dashboard
 
 -   **Interactive Dashboard**: Real-time statistics and analytics
--   **Student Overview**: Quick access to student information
--   **Course Management**: Easy course creation and management
--   **Progress Tracking**: Monitor student academic progress
 
 ### 👨‍🎓 Student Management
 
 -   **Student Profiles**: Complete student information management
 -   **Enrollment System**: Course enrollment and registration
--   **Grade Management**: Track and update student grades
--   **Attendance Tracking**: Monitor student attendance records
 
-### 🎓 Course System
+### 🎓 Course Management
 
 -   **Course Catalog**: Browse available courses
--   **Syllabus Management**: Upload and manage course materials
--   **Assignment Tracking**: Submit and grade assignments
--   **Resource Library**: Centralized learning materials
+-   **Course Management**: Easy course creation and management
 
 ### 🔐 Authentication & Authorization
 
--   **Multi-role System**: Admin, Teacher, and Student roles
--   **Secure Login**: Laravel Sanctum authentication
--   **Permission Management**: Granular access control
+-   **Multi-role System**: Admin, Editor
+-   **Secure Login**: Laravel authentication
+-   **Permission Management**: Spatie
 -   **Session Management**: Secure user sessions
 
 ### 🎨 User Interface
@@ -83,7 +57,6 @@
 -   **Responsive Design**: Works on all devices
 -   **Modern UI**: Built with Tailwind CSS
 -   **Interactive Elements**: jQuery powered components
--   **Dark/Light Mode**: User preference support
 
 ## 🚀 Quick Start
 
@@ -101,4 +74,8 @@ Make sure you have the following installed:
 ```bash
 git clone https://github.com/hamzaouizied/student-management-system.git
 cd student-management-system
+touch .env
+php artisan migrate --seed
+Admin admin@student.com/password
+Editor editor@student.com/password
 ```
