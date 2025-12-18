@@ -78,4 +78,6 @@ touch .env
 php artisan migrate --seed
 Admin acount: admin@student.com/password
 Editor acount: editor@student.com/password
+php artisan serve
+npm run dev
 ```
