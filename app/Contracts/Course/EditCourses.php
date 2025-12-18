@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Contracts\User;
+namespace App\Contracts\Course;
 
-use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\Course\CourseRequest;
+use Illuminate\Http\JsonResponse;
+use App\Models\Course;
 
 interface EditCourses
 {
-    public function login(CourseRequest $courseRequest): RedirectResponse;
+    public function edit(CourseRequest $request, Course $course): JsonResponse;
 }

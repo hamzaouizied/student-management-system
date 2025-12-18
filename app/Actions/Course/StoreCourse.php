@@ -1,37 +1,23 @@
 <?php
 
-namespace App\Actions\user;
+namespace App\Actions\Course;
 
 use App\Contracts\Course\StoreCourses;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Course\CourseRequest;
+use App\Http\Resources\CourseResource;
+use App\Models\Course;
+use Illuminate\Http\JsonResponse;
 
 class StoreCourse implements StoreCourses
 {
-    public function Store(CourseRequest $request)
+    public function store(CourseRequest $request): JsonResponse
     {
-        $student = Student::create($request->only([
-            'first_name',
-            'last_name',
-            'email',
-            'date_of_birth',
-            'phone',
-            'address'
-        ]));
-
-        if ($request->has('courses')) {
-            $student->courses()->attach($request->input('courses'), [
-                'enrolled_at' => now()
-            ]);
-        }
-
-        $student->load('courses');
-
+        $course = Course::create($request->validated());
 
         return response()->json([
-            'message' => 'Student created successfully',
-            'data' => new StudentResource($student),
+            'success' => true,
+            'message' => 'Course created successfully',
+            'course' => new CourseResource($course),
         ], 201);
     }
 }

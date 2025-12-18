@@ -30,6 +30,22 @@ class AppServiceProvider extends ServiceProvider
             \App\Contracts\Student\DeleteStudents::class,
             \App\Actions\Student\DeleteStudent::class
         );
+
+
+        $this->app->singleton(
+            \App\Contracts\Course\StoreCourses::class,
+            \App\Actions\Course\StoreCourse::class
+        );
+
+        $this->app->singleton(
+            \App\Contracts\Course\EditCourses::class,
+            \App\Actions\Course\EditCourse::class
+        );
+
+        $this->app->singleton(
+            \App\Contracts\Course\DeleteCourses::class,
+            \App\Actions\Course\DeleteCourse::class
+        );
     }
 
     /**

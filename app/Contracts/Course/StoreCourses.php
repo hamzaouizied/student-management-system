@@ -2,10 +2,10 @@
 
 namespace App\Contracts\Course;
 
-use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\JsonResponse;
 use App\Http\Requests\Course\CourseRequest;
 
 interface StoreCourses
 {
-    public function Store(CourseRequest $courseRequest): RedirectResponse;
+    public function store(CourseRequest $courseRequest): JsonResponse;
 }

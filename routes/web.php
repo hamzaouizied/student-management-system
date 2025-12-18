@@ -18,7 +18,7 @@ Route::post('/login', action: [LoginController::class, 'login'])->name('login.po
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('/users', action: [UserController::class, 'index'])->name('users.index');
 Route::resource('students', StudentController::class);
-Route::get('/courses', action: [CourseController::class, 'index'])->name('courses.index');
+Route::resource('courses', CourseController::class);
 
 
 
