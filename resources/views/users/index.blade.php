@@ -2,7 +2,7 @@
 
 @section('header', 'Users')
 
-@section('dashboard-content')
+@section('main-content')
     <div class="bg-white">
         <table id="users-table" class="w-full text-sm">
             <thead>

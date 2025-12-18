@@ -1,8 +1,8 @@
-@extends('layouts.dashboard')
+@extends('layouts.main')
 
 @section('header', 'Edit Student')
 
-@section('dashboard-content')
+@section('main-content')
     <div class="bg-white rounded-xl p-6 mt-6">
         <h3 class="text-2xl font-semibold mb-6">Edit Student</h3>
 

@@ -1,6 +1,6 @@
-@extends('layouts.dashboard')
+@extends('layouts.main')
 
-@section('dashboard-content')
+@section('main-content')
     <div>
         <div class="bg-white p-8">
             <h3 class="text-2xl font-semibold mb-6">Edit Course</h3>

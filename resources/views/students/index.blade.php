@@ -1,8 +1,8 @@
-@extends('layouts.dashboard')
+@extends('layouts.main')
 
 @section('header', 'Manage Students')
 
-@section('dashboard-content')
+@section('main-content')
     <div class="flex justify-between items-center mb-4">
         <h2 class="text-lg font-semibold text-[#ff8000]">
             <i class="fa-duotone fa-solid fa-users"></i>

@@ -1,8 +1,8 @@
-@extends('layouts.dashboard')
+@extends('layouts.main')
 
 @section('header', 'Course Details')
 
-@section('dashboard-content')
+@section(section: 'main-content')
     <div class="max-w-4xl mx-auto bg-white shadow-lg rounded-xl p-6 mt-6">
         <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-6">
             <div>

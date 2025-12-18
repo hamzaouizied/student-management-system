@@ -18,7 +18,6 @@ Route::post('/login', action: [LoginController::class, 'login'])->name('login.po
 Route::middleware(['auth'])->group(function () {
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/users', action: [UserController::class, 'index'])->name('users.index');
     Route::resource('students', StudentController::class);
     Route::resource('courses', CourseController::class);
 });

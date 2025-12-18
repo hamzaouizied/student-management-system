@@ -6,19 +6,12 @@
     </div>
 
     <nav class="flex-1 px-3 py-4 space-y-2">
-        <a href="#"
+        <a href="{{ route('dashboard') }}"
             class="flex items-center px-4 py-2 rounded-lg text-gray-300 hover:bg-gray-700 hover:text-white
                                                                         {{ request()->routeIs('dashboard') ? 'bg-gray-700 text-white' : '' }}">
             <i class="fas fa-gauge w-6"></i>
             <span class="ml-3">Dashboard</span>
         </a>
-
-        <a href="{{ route('users.index') }}"
-            class="flex items-center px-4 py-2 rounded-lg text-gray-300 hover:bg-gray-700 hover:text-white">
-            <i class="fa-duotone fa-solid fa-users"></i>
-            <span class="ml-3 text-[#ff8000]">Users</span>
-        </a>
-
         <a href="{{ route('students.index') }}"
             class="flex items-center px-4 py-2 rounded-lg text-gray-300 hover:bg-gray-700 hover:text-white">
             <i class="fas fa-users w-6"></i>
@@ -38,7 +31,8 @@
 
         <form method="POST" action="{{ route('logout') }}" class="mt-3">
             @csrf
-            <button class="w-full flex items-center px-3 py-2 text-gray-300 hover:bg-gray-700 rounded-lg">
+            <button
+                class="w-full flex items-center px-3 py-2 text-gray-300 hover:bg-gray-700 rounded-lg cursor-pointer">
                 <i class="fas fa-sign-out-alt w-5"></i>
                 <span class="ml-2">Logout</span>
             </button>
