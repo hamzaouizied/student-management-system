@@ -15,7 +15,7 @@ class CourseFactory extends Factory
     public function definition(): array
     {
         return [
-            'course_ref' => 'CRS-' . $this->faker->numberBetween(100, 999),
+            'course_ref' => strtoupper($this->faker->regexify('[A-Z]{3}[0-9]{3}')),
             'title' => $this->faker->sentence(3),
             'description' => $this->faker->paragraph(),
             'credits' => $this->faker->numberBetween(1, 6),
