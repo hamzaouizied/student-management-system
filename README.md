@@ -1,7 +1,7 @@
 # Student Management System
 
 <p align="center">
-    <img src="http://student-managelebt-system.test/img/student.png" width="400" alt="Student Management System Logo">
+    <img src="https://similarpng.com/_next/image?url=https%3A%2F%2Fimage.similarpng.com%2Ffile%2Fsimilarpng%2Fvery-thumbnail%2F2021%2F09%2FSuccess-student-Logo-on-transparent-background-PNG.png&w=3840&q=75" width="400" alt="Student Management System Logo">
 </p>
 
 <p align="center">
@@ -76,6 +76,6 @@ git clone https://github.com/hamzaouizied/student-management-system.git
 cd student-management-system
 touch .env
 php artisan migrate --seed
-Admin admin@student.com/password
-Editor editor@student.com/password
+Admin acount: admin@student.com/password
+Editor acount: editor@student.com/password
 ```
