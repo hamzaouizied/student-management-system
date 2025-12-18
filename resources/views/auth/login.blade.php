@@ -45,18 +45,6 @@
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                             @enderror
                         </div>
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center">
-                                <input class="w-4 h-4 rounded border-gray-300 text-[#ff8000] focus:ring-[#ff8000]"
-                                    type="checkbox" name="rememberMe" id="rememberMe">
-                                <label class="ml-2 text-sm text-gray-600 dark:text-gray-300" for="rememberMe">
-                                    Remember me
-                                </label>
-                            </div>
-                            <a href="#" class="text-sm text-[#ff8000] hover:underline">
-                                Forgot password?
-                            </a>
-                        </div>
                         <button type="submit" class="w-full text-white bg-[#ff8000] rounded-lg px-5 py-2.5 cursor-pointer">
                             Sign in
                         </button>
