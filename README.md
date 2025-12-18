@@ -76,6 +76,7 @@ git clone https://github.com/hamzaouizied/student-management-system.git
 cd student-management-system
 touch .env
 php artisan migrate --seed
+composer install
 Admin acount: admin@student.com/password
 Editor acount: editor@student.com/password
 php artisan serve
