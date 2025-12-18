@@ -8,8 +8,10 @@ use App\Contracts\Student\StoreStudents;
 use App\Contracts\Student\DeleteStudents;
 use App\Contracts\Student\EditStudents;
 use App\Http\Requests\Student\StudentRequest;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
-class StudentController extends Controller
+class StudentController extends Controller implements HasMiddleware
 {
     protected StoreStudents $storeStudent;
     protected DeleteStudents $deleteStudent;
@@ -20,6 +22,16 @@ class StudentController extends Controller
         $this->storeStudent = $storeStudent;
         $this->deleteStudent = $deleteStudent;
         $this->editStudent = $editStudent;
+    }
+
+    public static function middleware(): array
+    {
+        return [
+            new Middleware('permission:view students', only: ['index', 'show']),
+            new Middleware('permission:create students', only: ['create', 'store']),
+            new Middleware('permission:edit students', only: ['edit', 'update']),
+            new Middleware('permission:delete students', only: ['destroy']),
+        ];
     }
 
     /**

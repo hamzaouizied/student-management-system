@@ -20,7 +20,7 @@ class EditorUserSeeder extends Seeder
             ['email' => 'editor@student.com'],
             [
                 'name' => 'Editor User',
-                'password' => Hash::make('password'), // change this for production
+                'password' => Hash::make('password'),
             ]
         );
 

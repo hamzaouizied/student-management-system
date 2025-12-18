@@ -7,8 +7,9 @@ use App\Contracts\Course\StoreCourses;
 use App\Contracts\Course\EditCourses;
 use App\Contracts\Course\DeleteCourses;
 use App\Http\Requests\Course\CourseRequest;
-
-class CourseController extends Controller
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
+class CourseController extends Controller implements HasMiddleware
 {
     protected StoreCourses $storeCourse;
     protected EditCourses $editCourse;
@@ -19,6 +20,17 @@ class CourseController extends Controller
         $this->storeCourse = $storeCourse;
         $this->editCourse = $editCourse;
         $this->deleteCourse = $deleteCourse;
+    }
+
+
+    public static function middleware(): array
+    {
+        return [
+            new Middleware('permission:view courses', only: ['index', 'show']),
+            new Middleware('permission:create courses', only: ['create', 'store']),
+            new Middleware('permission:edit courses', only: ['edit', 'update']),
+            new Middleware('permission:delete courses', only: ['destroy']),
+        ];
     }
     /**
      * Display a listing of the resource.
