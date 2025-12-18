@@ -17,6 +17,11 @@ class AppServiceProvider extends ServiceProvider
         );
 
         $this->app->singleton(
+            \App\Contracts\User\LogoutUsers::class,
+            \App\Actions\User\LogoutUser::class
+        );
+
+        $this->app->singleton(
             \App\Contracts\Student\StoreStudents::class,
             \App\Actions\Student\StoreStudent::class
         );

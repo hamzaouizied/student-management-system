@@ -26,10 +26,7 @@
                             </button>
 
                             <div id="user-menu" class="hidden absolute right-0 mt-2 w-44 bg-white shadow rounded-md z-50">
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100">
-                                    Profile
-                                </a>
-                                <form method="POST" action="#">
+                                <form method="POST" action="{{ route('logout') }}">
                                     @csrf
                                     <button class="w-full text-left px-4 py-2 hover:bg-gray-100">
                                         Logout

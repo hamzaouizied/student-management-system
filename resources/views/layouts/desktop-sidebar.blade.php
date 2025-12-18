@@ -16,7 +16,7 @@
         <a href="{{ route('users.index') }}"
             class="flex items-center px-4 py-2 rounded-lg text-gray-300 hover:bg-gray-700 hover:text-white">
             <i class="fa-duotone fa-solid fa-users"></i>
-            <span class="ml-3 text-[#ff8000] font-semibold">Users</span>
+            <span class="ml-3 text-[#ff8000]">Users</span>
         </a>
 
         <a href="{{ route('students.index') }}"
@@ -36,7 +36,7 @@
         <p class="text-sm text-white">{{ Auth::user()->name }}</p>
         <p class="text-xs text-gray-400">{{ Auth::user()->email }}</p>
 
-        <form method="POST" action="#" class="mt-3">
+        <form method="POST" action="{{ route('logout') }}" class="mt-3">
             @csrf
             <button class="w-full flex items-center px-3 py-2 text-gray-300 hover:bg-gray-700 rounded-lg">
                 <i class="fas fa-sign-out-alt w-5"></i>

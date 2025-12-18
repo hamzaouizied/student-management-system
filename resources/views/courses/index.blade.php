@@ -5,7 +5,7 @@
 @section('dashboard-content')
     <div class="flex justify-between items-center mb-4">
         <h2 class="text-lg font-semibold text-[#ff8000]">
-            <i class="fa-duotone fa-solid fa-users"></i>
+            <i class="fa-solid fa-book"></i>
             Courses ({{ $courses->count() }})
         </h2>
         <a href="{{ route('courses.create') }}"
