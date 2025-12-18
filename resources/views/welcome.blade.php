@@ -163,8 +163,7 @@
                         <div
                             class="absolute -inset-4 bg-gradient-to-r from-primary to-transparent rounded-2xl opacity-20 blur-xl">
                         </div>
-                        <img id="studentImage" src="http://student-managelebt-system.test/img/student.png"
-                            alt="Student Dashboard"
+                        <img id="studentImage" src="{{ asset('img/student.png') }}" alt="Student Dashboard"
                             class="relative rounded-2xl shadow-2xl w-full max-w-2xl mx-auto border-2 border-primary/20">
                     </div>
 
