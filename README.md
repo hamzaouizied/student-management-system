@@ -1,7 +1,7 @@
 # Student Management System
 
 <p align="center">
-    <img src="https://image.similarpng.com/file/similarpng/very-thumbnail/2021/09/Success-student-Logo-on-transparent-background-PNG.png" width="400" alt="Student Management System Logo">
+    <img src="https://github.com/hamzaouizied/student-management-system/blob/master/public/img/student.png?raw=true" width="400" alt="Student Management System Logo">
 </p>
 
 <p align="center">
